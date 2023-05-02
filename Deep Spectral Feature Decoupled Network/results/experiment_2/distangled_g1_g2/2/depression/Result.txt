@@ -1,0 +1,27 @@
+Acc	F1	Kappa	F1_0	F1_1	F1_2
+0.9917	0.9917	0.9833	0.9916	0.9917
+
+Classification report:
+              precision    recall  f1-score   support
+
+      Normal       1.00      0.98      0.99       240
+  Depression       0.98      1.00      0.99       240
+
+    accuracy                           0.99       480
+   macro avg       0.99      0.99      0.99       480
+weighted avg       0.99      0.99      0.99       480
+
+Confusion matrix:
+[[236   4]
+ [  0 240]]
+
+    Accuracy	 0.9916666666666667
+ Cohen Kappa	 0.9833333333333333
+    F1-Score	 0.9916660879227723 	Average = macro
+   Precision	 0.9918032786885246 	Average = macro
+      Recall	 0.9916666666666667 	Average = macro
+
+Results of each class:
+    F1-Score	 [0.99159664 0.99173554]
+   Precision	 [1.         0.98360656]
+      Recall	 [0.98333333 1.        ]
