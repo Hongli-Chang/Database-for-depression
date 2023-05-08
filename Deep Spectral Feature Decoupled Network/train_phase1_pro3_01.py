@@ -207,14 +207,14 @@ def train(path,save_root_path):
 
     train_X, train_y_a, test_X, test_y_a, train_y_c, test_y_c, ATTR_NUM, CLASS_NUM, input_shape, lambda_mat, prior_list, phase4_X = gen_raw_data(path)
     print('CLASS_NUM:', CLASS_NUM)
-    idx_valid, idx_test = split_test_as_valid(test_y_c)
-    val_X = test_X[idx_valid]
-    val_y_a = test_y_a[idx_valid]
-    val_y_c = test_y_c[idx_valid]
-    #
-    test_X = test_X[idx_test]
-    test_y_a = test_y_a[idx_test]
-    test_y_c = test_y_c[idx_test]
+    idx_valid, idx_test = split_test_as_valid(train_y_c)
+    val_X = train_X[idx_valid]
+    val_y_a = train_y_a[idx_valid]
+    val_y_c = train_y_c[idx_valid]
+
+    train_X = train_X[idx_test]
+    train_y_a = train_y_a[idx_test]
+    train_y_c = train_y_c[idx_test]
 
 
 

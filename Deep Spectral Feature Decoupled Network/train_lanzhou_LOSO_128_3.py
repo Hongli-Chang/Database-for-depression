@@ -242,9 +242,14 @@ def train(save_root_path):
 
         train_X, train_y_a, test_X, test_y_a, train_y_c, test_y_c, ATTR_NUM, CLASS_NUM, input_shape, lambda_mat, prior_list = gen_raw_data(M)
 
-        val_X = test_X
-        val_y_a = test_y_a
-        val_y_c = test_y_c
+        idx_valid, idx_test = split_test_as_valid(train_y_c)
+        val_X = train_X[idx_valid]
+        val_y_a = train_y_a[idx_valid]
+        val_y_c = train_y_c[idx_valid]
+
+        train_X = train_X[idx_test]
+        train_y_a = train_y_a[idx_test]
+        train_y_c = train_y_c[idx_test]
 
 
         mkdir(save_root_path)
@@ -266,7 +271,7 @@ def train(save_root_path):
         print("Classification accuracy: %f " % (acc_max))
         print(write_path3)
         model1=load_model(os.path.join(save_root_path, write_path3))
-        val_f = model1.predict(val_X)
+        val_f = model1.predict(test_X)
         savemat(os.path.join(save_root_path, 'lanzhou128_sub_%s.mat' % (SUB[n])),
                 {'val_f': val_f, 'test_y': test_y, 'prob': prob, 'acc_max': acc_max})
         #pdb.set_trace()
